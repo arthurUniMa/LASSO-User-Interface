@@ -1,0 +1,56 @@
+<body>
+    <div class="container h-100 loginEntry">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
+                <div class="d-flex justify-content-center h-500">
+                    <img src="./assets/LASSOLOGONAME.png" alt="LASSO-Logo" width="250" height="100">
+                </div>
+                <div class="d-flex justify-content-center form_container">
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <mat-icon aria-hidden="false" aria-label="Example home icon">account_box</mat-icon>
+                                </span>
+                            </div>
+                            <input type="text" formControlName="username" class="form-control input_user"
+                                placeholder="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                            <div *ngIf="f.username.errors?.required">Username must not be empty!</div>
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-append ">
+                                <span class="input-group-text">
+                                    <mat-icon aria-hidden="false" aria-label="Example home icon"
+                                        class="mat-icon notranslate material-icons" role="img">vpn_key</mat-icon>
+                                </span>
+                            </div>
+                            <input type="password" formControlName="password" class="form-control input_pass"
+                                placeholder="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                <div *ngIf="f.password.errors.required">Password is required!</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customControlInline">
+                                <label class="custom-control-label" for="customControlInline">Remember me</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="d-flex justify-content-center mt-3 login_container">
+                    <button type="button" [routerLink]="['/myLsl']" [disabled]="loading"
+                        class="btn login_btn">Login</button>
+                </div>
+                <div class="mt-4">
+                    <div class="d-flex justify-content-center links">
+                        Don't have an account? <a href="#" class="ml-2 customLinks">Sign Up</a>
+                    </div>
+                    <div class="d-flex justify-content-center links customLinks">
+                        <a href="#" class="customLinks">Forgot your password?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
